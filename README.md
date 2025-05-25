@@ -19,12 +19,12 @@ This project is a beginner-friendly guide to learning the fundamentals of JavaSc
 
 ## 📘 Agenda
 
-- 📌 Introduction to JavaScript  
-- 📌 Data Types  
-- 📌 Variables (`var`, `let`, `const`)  
-- 📌 Conditional Statements (`if`, `else`, `switch`)  
-- 📌 Loops (`for`, `while`, `do...while`)  
-- 📌 Functions  
+- 📌 Introduction to JavaScript
+- 📌 Data Types
+- 📌 Variables (`var`, `let`, `const`)
+- 📌 Conditional Statements (`if`, `else`, `switch`)
+- 📌 Loops (`for`, `while`, `do...while`)
+- 📌 Functions
 - 📌 And many more foundational topics...
 
 Each section includes clear explanations and hands-on examples to help you learn by doing.
@@ -57,7 +57,24 @@ Before starting, you should have:
 
 3. **Open the project in your code editor.**
 
-    Each folder contains a README.md and JavaScript files that you can run in the browser console or using Node.js.
+   Each folder contains a README.md and JavaScript files that you can run in the browser console or using Node.js.
+
+## 💡 Quick Tip: Use Quokka.js for Live JavaScript Feedback
+
+To speed up your learning and see real-time results, install Quokka.js in Visual Studio Code.
+
+- Open any .js file from this project.
+
+- Use Ctrl+Shift+P (or Cmd+Shift+P on Mac), then run Quokka: Start on Current File.
+
+- Modify the code and see immediate inline output without needing to reload or run manually.
+
+Example:
+
+```js
+const greet = "Hello, Quokka!"; // Quokka shows: "Hello, Quokka!"
+console.log(greet);
+```
 
 ## 🎯 Learning Goals
 
@@ -81,20 +98,21 @@ By the end of this course, you will be able to:
   - Vue
   - Svelte
   - SolidJS
-  - Qwik *(Emerging in 2025)*
-  - **Next.js** *(Fullstack Framework with frontend-first focus)*
+  - Qwik _(Emerging in 2025)_
+  - **Next.js** _(Fullstack Framework with frontend-first focus)_
 
 ### 🖥️ Backend Topics
 
 - JavaScript Runtime Environments:
+
   - Node.js
   - Deno
-  - Bun *(Fast and modern alternative)*
+  - Bun _(Fast and modern alternative)_
 
 - Backend Frameworks:
   - Express.js
   - NestJS
-  - Hono *(Lightweight framework for edge functions)*
+  - Hono _(Lightweight framework for edge functions)_
   - Fastify
 
 ---
