@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Web Storage Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+
+      section {
+        margin-bottom: 30px;
+      }
+
+      input {
+        margin-right: 10px;
+      }
+
+      code {
+        background: #f4f4f4;
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Web Storage Demo</h1>
+
+    <!-- Section: sessionStorage -->
+    <section>
+      <h2>Session Storage</h2>
+      <input type="text" id="sessionInput" placeholder="Enter name (session)" />
+      <button onclick="saveToSession()">Save</button>
+      <button onclick="loadFromSession()">Load</button>
+      <p id="sessionResult"></p>
+    </section>
+
+    <!-- Section: localStorage -->
+    <section>
+      <h2>Local Storage</h2>
+      <input type="text" id="localInput" placeholder="Enter theme (local)" />
+      <button onclick="saveToLocal()">Save</button>
+      <button onclick="loadFromLocal()">Load</button>
+      <button onclick="removeFromLocal()">Remove</button>
+      <button onclick="clearLocal()">Clear All</button>
+      <p id="localResult"></p>
+    </section>
+
+    <!-- Section: Display All Keys -->
+    <section>
+      <h2>All localStorage Keys</h2>
+      <button onclick="listAllKeys()">List Keys</button>
+      <ul id="keyList"></ul>
+    </section>
+
+    <script>
+      // Session Storage: Set & Get
+      function saveToSession() {
+        const name = document.getElementById("sessionInput").value;
+        sessionStorage.setItem("username", name);
+        alert("Saved to sessionStorage!");
+      }
+
+      function loadFromSession() {
+        const user = sessionStorage.getItem("username");
+        document.getElementById("sessionResult").textContent = user
+          ? `Stored session username: ${user}`
+          : "No session data found.";
+      }
+
+      // Local Storage: Set, Get, Remove, Clear
+      function saveToLocal() {
+        const theme = document.getElementById("localInput").value;
+        localStorage.setItem("theme", theme);
+        alert("Saved to localStorage!");
+      }
+
+      function loadFromLocal() {
+        const theme = localStorage.getItem("theme");
+        document.getElementById("localResult").textContent = theme
+          ? `Stored theme: ${theme}`
+          : "No theme data found.";
+      }
+
+      function removeFromLocal() {
+        localStorage.removeItem("theme");
+        alert("Theme removed from localStorage.");
+      }
+
+      function clearLocal() {
+        localStorage.clear();
+        alert("All localStorage data cleared.");
+      }
+
+      function listAllKeys() {
+        const list = document.getElementById("keyList");
+        list.innerHTML = "";
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          const li = document.createElement("li");
+          li.textContent = `${key}: ${localStorage.getItem(key)}`;
+          list.appendChild(li);
+        }
+      }
+    </script>
+  </body>
+</html>
