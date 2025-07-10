@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Event Listeners</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #1e1e2f;
+        color: #f0f0f0;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #00d8ff;
+      }
+
+      section {
+        margin-bottom: 30px;
+        padding: 20px;
+        background-color: #2b2b3d;
+        border-radius: 10px;
+      }
+
+      button,
+      input,
+      select {
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+      }
+
+      button {
+        background-color: #00bcd4;
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0097a7;
+      }
+
+      #box {
+        width: 100px;
+        height: 100px;
+        background-color: salmon;
+        margin-top: 10px;
+        transition: 0.3s ease;
+      }
+
+      img {
+        width: 150px;
+        border-radius: 8px;
+        transition: border 0.3s;
+      }
+
+      .log {
+        font-family: monospace;
+        background-color: #111;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        white-space: pre-line;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Event Listeners Demo</h1>
+
+    <!-- Click -->
+    <section>
+      <h2>Click Event</h2>
+      <button id="clickBtn">Click Me</button>
+      <div class="log" id="clickLog"></div>
+    </section>
+
+    <!-- Double Click -->
+    <section>
+      <h2>Double Click Event</h2>
+      <div id="box"></div>
+      <div class="log" id="dblClickLog"></div>
+    </section>
+
+    <!-- Mouse Enter -->
+    <section>
+      <h2>Mouse Enter Event</h2>
+      <img id="image" src="https://picsum.photos/120" alt="Placeholder" />
+      <div class="log" id="mouseLog"></div>
+    </section>
+
+    <!-- Input / Change -->
+    <section>
+      <h2>Input, Change & Blur Events</h2>
+      <label for="nameInput">Your Name:</label><br />
+      <input type="text" id="nameInput" placeholder="Type your name..." /><br />
+      <div class="log" id="inputLog"></div>
+
+      <label for="dropdown">Select Category:</label><br />
+      <select id="dropdown">
+        <option value="">--Choose--</option>
+        <option value="Fruit">Fruit</option>
+        <option value="Vegetable">Vegetable</option>
+      </select>
+      <div class="log" id="changeLog"></div>
+    </section>
+
+    <!-- Keyboard Events -->
+    <section>
+      <h2>Key Events</h2>
+      <input type="text" id="keyInput" placeholder="Type something..." />
+      <div class="log" id="keyLog"></div>
+    </section>
+
+    <script>
+      // Click
+      const clickBtn = document.getElementById("clickBtn");
+      const clickLog = document.getElementById("clickLog");
+      clickBtn.addEventListener("click", () => {
+        clickLog.textContent = "Button clicked!";
+      });
+
+      // Double Click
+      const box = document.getElementById("box");
+      const dblClickLog = document.getElementById("dblClickLog");
+      box.addEventListener("dblclick", () => {
+        box.style.backgroundColor = "lightgreen";
+        dblClickLog.textContent = "Box was double-clicked!";
+      });
+
+      // Mouse Enter
+      const image = document.getElementById("image");
+      const mouseLog = document.getElementById("mouseLog");
+      image.addEventListener("mouseenter", () => {
+        image.style.border = "3px solid #00d8ff";
+        mouseLog.textContent = "Mouse entered the image.";
+      });
+
+      image.addEventListener("mouseleave", () => {
+        image.style.border = "none";
+        mouseLog.textContent = "Mouse left the image.";
+      });
+
+      // Input & Blur
+      const nameInput = document.getElementById("nameInput");
+      const inputLog = document.getElementById("inputLog");
+
+      nameInput.addEventListener("input", (e) => {
+        inputLog.textContent = `Typing: ${e.target.value}`;
+      });
+
+      nameInput.addEventListener("blur", () => {
+        inputLog.textContent += "\nInput lost focus (blur).";
+      });
+
+      // Change
+      const dropdown = document.getElementById("dropdown");
+      const changeLog = document.getElementById("changeLog");
+
+      dropdown.addEventListener("change", (e) => {
+        changeLog.textContent = `Selected: ${e.target.value}`;
+      });
+
+      // Key Events
+      const keyInput = document.getElementById("keyInput");
+      const keyLog = document.getElementById("keyLog");
+
+      keyInput.addEventListener("keydown", (e) => {
+        keyLog.textContent = `Key Down: ${e.key}`;
+      });
+
+      keyInput.addEventListener("keyup", (e) => {
+        keyLog.textContent += `\nKey Up: ${e.key}`;
+      });
+
+      keyInput.addEventListener("keypress", (e) => {
+        keyLog.textContent += `\nKey Press: ${e.key}`;
+      });
+    </script>
+  </body>
+</html>
