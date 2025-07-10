@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM JavaScript Examples</title>
+    <style>
+      body {
+        background-color: #1e1e2f;
+        color: #f0f0f0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+      }
+
+      h1,
+      h2 {
+        color: #00d8ff;
+      }
+
+      .box {
+        width: 200px;
+        height: 120px;
+        border: 2px solid #444;
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #2c2c3e;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .highlight {
+        border-color: #ff4081;
+        background-color: #3b3b55;
+      }
+
+      button {
+        margin: 5px;
+        padding: 10px 15px;
+        background-color: #00d8ff;
+        color: #000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #00bcd4;
+      }
+
+      a {
+        color: #ffb74d;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      img {
+        margin-top: 10px;
+        border-radius: 6px;
+        width: 120px;
+        height: auto;
+      }
+
+      .content {
+        background-color: #2b2b3d;
+        padding: 15px;
+        margin-top: 10px;
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="main-header">Header Title</h1>
+    <p>This is the first paragraph.</p>
+    <p>This is another paragraph.</p>
+
+    <div class="box">Box A</div>
+    <div class="box">Box B</div>
+
+    <button>Click Me</button>
+    <button>Press Me</button>
+
+    <a href="https://example.com">Visit Example</a><br />
+    <img src="https://picsum.photos/120" alt="Random image" />
+
+    <h2 id="title">Original Title</h2>
+    <div class="content">Original Content</div>
+
+    <script>
+      // =====================================================
+      // DOCUMENT OBJECT MODEL (DOM) IN JAVASCRIPT EXAMPLES
+      // =====================================================
+
+      // -----------------------------------------------------
+      // 1. Getting Elements
+      // -----------------------------------------------------
+
+      const paragraphs = document.getElementsByTagName("p");
+      console.log("[DOM] First paragraph:", paragraphs[0]?.textContent);
+
+      const boxes = document.getElementsByClassName("box");
+      console.log("[DOM] First box:", boxes[0]);
+
+      const header = document.getElementById("main-header");
+      console.log("[DOM] Header:", header?.innerText);
+
+      const firstButton = document.querySelector("button");
+      const allButtons = document.querySelectorAll("button");
+      console.log("[DOM] First button:", firstButton);
+      console.log("[DOM] Total buttons:", allButtons.length);
+
+      // -----------------------------------------------------
+      // 2. Adding Attributes
+      // -----------------------------------------------------
+
+      const link = document.querySelector("a");
+      if (link) {
+        link.setAttribute("target", "_blank");
+        console.log("[DOM] Link updated with target _blank");
+      }
+
+      const image = document.querySelector("img");
+      if (image) {
+        image.alt = "A beautiful image";
+        console.log("[DOM] Image alt set directly");
+      }
+
+      const box = document.querySelector(".box");
+      box?.classList.add("highlight");
+      console.log("[DOM] Class 'highlight' added to box");
+
+      box?.classList.remove("highlight");
+      console.log("[DOM] Class 'highlight' removed from box");
+
+      // -----------------------------------------------------
+      // 3. Adding Text to HTML Elements
+      // -----------------------------------------------------
+
+      const title = document.querySelector("#title");
+      if (title) {
+        title.textContent = "Welcome to the DOM World";
+        console.log("[DOM] Title updated using textContent");
+      }
+
+      const content = document.querySelector(".content");
+      if (content) {
+        content.innerHTML =
+          "<p>This is <strong>dynamic</strong> HTML content.</p>";
+        console.log("[DOM] Content updated using innerHTML");
+      }
+
+      // -----------------------------------------------------
+      // 4. Adding Styles
+      // -----------------------------------------------------
+
+      if (title) {
+        title.style.color = "#4caf50";
+        console.log("[DOM] Title color set to green");
+      }
+
+      if (box) {
+        box.style.backgroundColor = "#4a4a63";
+        console.log("[DOM] Box background color set to custom dark");
+      }
+
+      const paragraph = document.querySelector("p");
+      if (paragraph) {
+        paragraph.style.fontSize = "18px";
+        console.log("[DOM] Paragraph font size set to 18px");
+      }
+    </script>
+  </body>
+</html>
