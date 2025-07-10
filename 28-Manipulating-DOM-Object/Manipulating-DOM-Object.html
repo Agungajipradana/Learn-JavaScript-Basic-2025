@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manipulating DOM Objects</title>
+  <style>
+    body {
+      background-color: #1e1e2f;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+    }
+
+    h1, h2, h3 {
+      color: #00d8ff;
+    }
+
+    .container {
+      background-color: #2b2b3d;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .card {
+      background-color: #3c3c55;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    button {
+      background-color: #00bcd4;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0097a7;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #444;
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Manipulating DOM Objects</h1>
+
+  <div class="container" id="content">
+    <!-- Elements will be added here dynamically -->
+  </div>
+
+  <button id="removeCardBtn">Remove Card</button>
+
+  <script>
+    // -----------------------------------------
+    // 1. Creating a Single Element
+    // -----------------------------------------
+    const heading = document.createElement('h2');
+    heading.textContent = 'Welcome to the DOM!';
+    heading.classList.add('main-heading');
+
+    // -----------------------------------------
+    // 2. Creating Multiple Elements
+    // -----------------------------------------
+    const items = ['Apple', 'Banana', 'Cherry'];
+    const list = document.createElement('ul');
+
+    items.forEach((fruit) => {
+      const li = document.createElement('li');
+      li.textContent = fruit;
+      list.appendChild(li);
+    });
+
+    // -----------------------------------------
+    // 3. Appending Child to a Parent Element
+    // -----------------------------------------
+    const container = document.getElementById('content');
+    container.appendChild(heading);
+    container.appendChild(list);
+
+    // -----------------------------------------
+    // Add a new card element to demonstrate removal
+    // -----------------------------------------
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.textContent = 'This is a removable card.';
+    container.appendChild(card);
+
+    // -----------------------------------------
+    // 4. Removing a Child Element from a Parent Node
+    // -----------------------------------------
+    const removeButton = document.getElementById('removeCardBtn');
+    removeButton.addEventListener('click', () => {
+      if (container.contains(card)) {
+        card.remove(); // Modern way to remove itself
+        console.log('[DOM] Card removed');
+      } else {
+        console.log('[DOM] Card already removed');
+      }
+    });
+
+    // -----------------------------------------
+    // 5. Inserting Element at Specific Position
+    // -----------------------------------------
+    const subtitle = document.createElement('h3');
+    subtitle.textContent = 'Subheading Inserted After Heading';
+    heading.insertAdjacentElement('afterend', subtitle);
+
+    // -----------------------------------------
+    // 6. Replacing an Element
+    // -----------------------------------------
+    const newHeading = document.createElement('h2');
+    newHeading.textContent = 'Updated DOM Heading';
+    container.replaceChild(newHeading, heading);
+
+    // -----------------------------------------
+    // 7. Cloning an Element
+    // -----------------------------------------
+    const clonedList = list.cloneNode(true);
+    container.appendChild(clonedList);
+  </script>
+
+</body>
+</html>
